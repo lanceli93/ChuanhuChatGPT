@@ -38,13 +38,13 @@ def get_response(
 ):
     headers = {
         "Content-Type": "application/json",
-        "Authorization": f"Bearer {openai_api_key}",
+        "api-key": f"{openai_api_key}",
     }
 
     history = [construct_system(system_prompt), *history]
 
     payload = {
-        "model": selected_model,
+        #"model": selected_model,
         "messages": history,  # [{"role": "user", "content": f"{inputs}"}],
         "temperature": temperature,  # 1.0,
         "top_p": top_p,  # 1.0,
@@ -60,19 +60,19 @@ def get_response(
 
     proxies = get_proxies()
 
+    API_VERSION = "/chat/completions?api-version=2023-03-15-preview"
+
     # 如果有自定义的api-url，使用自定义url发送请求，否则使用默认设置发送请求
     if shared.state.api_url != API_URL:
         logging.info(f"使用自定义API URL: {shared.state.api_url}")
-        
     response = requests.post(
-        shared.state.api_url,
+        shared.state.api_url + selected_model + API_VERSION,
         headers=headers,
         json=payload,
         stream=True,
         timeout=timeout,
-        proxies=proxies,
+        proxies=proxies
     )
-    
     return response
 
 
@@ -286,7 +286,7 @@ def predict(
     else:
         link_references = ""
 
-    if len(openai_api_key) != 51:
+    if len(openai_api_key) != 32:
         status_text = standard_error_msg + no_apikey_msg
         logging.info(status_text)
         chatbot.append((inputs, ""))

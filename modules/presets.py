@@ -3,7 +3,7 @@ import gradio as gr
 
 # ChatGPT 设置
 initial_prompt = "You are a helpful assistant."
-API_URL = "https://api.openai.com/v1/chat/completions"
+API_URL = "https://lanceopenaitesting.openai.azure.com/openai/deployments/"
 BALANCE_API_URL="https://api.openai.com/dashboard/billing/credit_grants"
 USAGE_API_URL="https://api.openai.com/dashboard/billing/usage"
 HISTORY_DIR = "history"
@@ -16,7 +16,7 @@ connection_timeout_prompt = "连接超时，无法获取对话。"  # 连接超�
 read_timeout_prompt = "读取超时，无法获取对话。"  # 读取超时
 proxy_error_prompt = "代理错误，无法获取对话。"  # 代理错误
 ssl_error_prompt = "SSL错误，无法获取对话。"  # SSL 错误
-no_apikey_msg = "API key长度不是51位，请检查是否输入正确。"  # API key 长度不足 51 位
+no_apikey_msg = "API key长度不是32位，请检查是否输入正确。"  # API key 长度不足 32 位
 no_input_msg = "请输入对话内容。"  # 未输入对话内容
 
 max_token_streaming = 3500  # 流式对话时的最大 token 数
@@ -49,12 +49,8 @@ footer = """\
 summarize_prompt = "你是谁？我们刚才聊了什么？"  # 总结对话时的 prompt
 
 MODELS = [
-    "gpt-3.5-turbo",
-    "gpt-3.5-turbo-0301",
+    "gpt-35-turbo",
     "gpt-4",
-    "gpt-4-0314",
-    "gpt-4-32k",
-    "gpt-4-32k-0314",
 ]  # 可选的模型
 
 REPLY_LANGUAGES = [
