@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 import os
-import logging
+#import logging
 import sys
 
 import gradio as gr
@@ -11,10 +11,10 @@ from modules.overwrites import *
 from modules.chat_func import *
 from modules.openai_func import get_usage
 
-logging.basicConfig(
-    level=logging.DEBUG,
-    format="%(asctime)s [%(levelname)s] [%(filename)s:%(lineno)d] %(message)s",
-)
+# logging.basicConfig(
+#     level=logging.DEBUG,
+#     format="%(asctime)s [%(levelname)s] [%(filename)s:%(lineno)d] %(message)s",
+# )
 
 my_api_key = ""  # 在这里输入你的 API 密钥
 
