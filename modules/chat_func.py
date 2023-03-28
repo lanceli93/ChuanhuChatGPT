@@ -2,7 +2,7 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING, List
 
-import logging
+
 import json
 import os
 import requests
@@ -18,6 +18,11 @@ from modules.presets import *
 from modules.llama_func import *
 from modules.utils import *
 import modules.shared as shared
+
+#Logging logs to file
+from logger_config import setup_logging
+logging = setup_logging()
+
 
 # logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] [%(filename)s:%(lineno)d] %(message)s")
 
