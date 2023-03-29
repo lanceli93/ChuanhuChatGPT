@@ -68,5 +68,5 @@ def get_usage(openai_api_key):
         status_text = standard_error_msg + read_timeout_prompt + error_retrieve_prompt
         return status_text
     except Exception as e:
-        logging.error(f"获取API使用情况失败:"+str(e))
+        # logging.error(f"获取API使用情况失败:"+str(e))
         return standard_error_msg + error_retrieve_prompt
